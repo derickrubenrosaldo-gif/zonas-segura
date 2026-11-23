@@ -1,0 +1,35 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.9.0",
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "^/$",
+      "dest": "/public/index.html"
+    },
+    {
+      "src": "/(styles.css|admin.css|app.js|ambiance.js|contactos.js|favicon.svg|robots.txt)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "^/logos/(gobierno-mexico|itesco|zona-segura|zona-segura-icon)\\.png$",
+      "dest": "/public/logos/$1.png"
+    },
+    {
+      "src": "^/fonts/(noto-sans-regular\\.woff|noto-sans-bold\\.woff|noto-license\\.txt)$",
+      "dest": "/public/fonts/$1"
+    },
+    {
+      "src": "^/logos/contactos/(911|089|coatzacoalcos)\\.webp$",
+      "dest": "/public/logos/contactos/$1.webp"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ]
+}
